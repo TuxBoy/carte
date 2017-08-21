@@ -25,6 +25,8 @@ Je vous écris tout ce que je désiré réaliser comme sa, je pourrais mettre à
 
 <a target="_blank" href="http://www.hostingpics.net" title="Hebergeur d'image"><img src="https://img15.hostingpics.net/pics/484666997.png" border="0" alt="Hebergeur d'image" /></a>Avant ( beurk ! ) > <a target="_blank" href="http://www.hostingpics.net" title="Hebergeur d'image"><img src="https://img15.hostingpics.net/pics/524530926.png" border="0" alt="Hebergeur d'image" /></a> Après *wahoo 
 
+A la fin, je désire que l'ensemble de ma carte puisse ressemble à cela: https://preview.ait-themes.club/theme/directory2/
+Si vous ne comprenez pas ma demande, je vous invite à regarder le lien ci-dessus qui montre au mieux la demande 
 
 
 Dans l'attente, je reste à votre disposition pour tous renseignements complémentaires
