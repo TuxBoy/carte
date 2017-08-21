@@ -26,7 +26,6 @@ Je vous écris tout ce que je désiré réaliser comme sa, je pourrais mettre à
 <a target="_blank" href="http://www.hostingpics.net" title="Hebergeur d'image"><img src="https://img15.hostingpics.net/pics/484666997.png" border="0" alt="Hebergeur d'image" /></a>Avant ( beurk ! ) > <a target="_blank" href="http://www.hostingpics.net" title="Hebergeur d'image"><img src="https://img15.hostingpics.net/pics/524530926.png" border="0" alt="Hebergeur d'image" /></a> Après *wahoo 
 
 
-Accède à mon github ici: ( création en cours )
 
 Dans l'attente, je reste à votre disposition pour tous renseignements complémentaires
 Recevez mes salutations distinguées
@@ -34,7 +33,9 @@ Recevez mes salutations distinguées
 Enzo METAYER 
 12 rue saint Martin 
 68440 HABSHEIM 68440 
+
 Téléphone: 06 41 93 56 75 (appel non surtaxé)
+
 Mail:  mr.metayer.enzo@gmail.com
 facebook: Enzo Métayer
 youtube: drazozo
