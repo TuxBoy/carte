@@ -1,0 +1,8 @@
+{
+    "name": "drazozo/carte",
+    "description": "TODO: Mettre une description",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {}
+}
