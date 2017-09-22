@@ -5,14 +5,13 @@ use GuzzleHttp\Psr7\ServerRequest;
 require __DIR__ . '/../vendor/autoload.php';
 
 if (file_exists(__DIR__ . '/../.env')) {
-    $dotenv = new Dotenv\Dotenv(__DIR__ . '/TuxBoy-Framework/');
+    $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
     $dotenv->load();
 }
 $config = require dirname(__DIR__) . '/config.php';
 $applications = [
     \App\Home\Application::class,
-	\App\Contact\Application::class,
-    \App\Blog\Application::class
+    \App\Trade\Application::class
 ];
 $app = new TuxBoy\App($config, $applications);
 

@@ -5,8 +5,8 @@ use App\Trade\Controller\TradeController;
 use App\Trade\Entity\Trade;
 use App\Trade\Table\TradesTable;
 use Cake\ORM\TableRegistry;
-use Core\ApplicationInterface;
-use Core\Router\Router;
+use TuxBoy\ApplicationInterface;
+use TuxBoy\Router\Router;
 use function DI\add;
 
 class Application implements ApplicationInterface
@@ -21,6 +21,7 @@ class Application implements ApplicationInterface
         $router->get('/commerces', [TradeController::class, 'index'], 'trade.index');
         $router->get('/commerce/nouveau', [TradeController::class, 'create'], 'trade.create');
         $router->post('/commerce/nouveau', [TradeController::class, 'create']);
+        $router->post('/commerce/delete/{id:\d+}', [TradeController::class, 'delete'], 'trade.delete');
     }
 
     /**
