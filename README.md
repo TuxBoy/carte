@@ -2,7 +2,7 @@
 
 ### Configurer l'environement de développement
 
-Il faut cloner le dépôt :
+Il faut cloner le dépôt puis se rendre dans le dossier du pojet :
 
 ```bash
 $ git clone https://github.com/TuxBoy/carte.git && cd carte/
