@@ -11,7 +11,7 @@ $ git clone https://github.com/TuxBoy/carte.git && cd carte/
 (à mettre à jour le dépôt si on le merge)
 
 ```bash
-$ composer install
+$ composer install -o
 ```
 
 Maintenant il faut le Core du Framework qui est dans un dépôt à part afin de mieux gérer l'évolution.
