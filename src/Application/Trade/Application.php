@@ -12,7 +12,6 @@ use function DI\add;
 /**
  * Class Application
  *
- * @TODO Reste à faire l'édition
  */
 class Application implements ApplicationInterface
 {
