@@ -57,8 +57,8 @@ class EntityFormBuilderTest extends TestCase
 	public function testGenerateSimpleForm()
 	{
 		$entity = new Fake;
-		$this->assertEquals(
-			'<form action="/demo" method="POST"> <input name="name" type="text"> <button type="submit">Envoyer</button> </form>',
+		$this->assertContains(
+			'<form action="/demo" method="POST"> <div class="form-group"> <input name="name" class="form-control" type="text"> </div> <button type="submit" class="btn btn-primary">Envoyer</button> </form>',
 			$this->builder->generateForm($entity, '/demo')
 		);
 	}
@@ -67,7 +67,7 @@ class EntityFormBuilderTest extends TestCase
 	{
 		$entity = new Demo();
 		$this->assertEquals(
-			'<form action="/demo" method="POST"> <input name="name" type="text"> <input name="slug" type="text"> <textarea name="content"></textarea> <button type="submit">Envoyer</button> </form>',
+			'<form action="/demo" method="POST"> <div class="form-group"> <input name="name" class="form-control" type="text"> </div> <div class="form-group"> <input name="slug" class="form-control" type="text"> </div> <div class="form-group"> <textarea name="content" class="form-control"></textarea> </div> <button type="submit" class="btn btn-primary">Envoyer</button> </form>',
 			$this->builder->generateForm($entity, '/demo')
 		);
 	}
@@ -79,7 +79,7 @@ class EntityFormBuilderTest extends TestCase
 		$entity->slug = 'un-test';
 		$entity->content = 'Du contenu';
 		$this->assertEquals(
-			'<form action="/demo" method="POST"> <input name="name" value="joe" type="text"> <input name="slug" value="un-test" type="text"> <textarea name="content">Du contenu</textarea> <button type="submit">Envoyer</button> </form>',
+            '<form action="/demo" method="POST"> <div class="form-group"> <input name="name" value="joe" class="form-control" type="text"> </div> <div class="form-group"> <input name="slug" value="un-test" class="form-control" type="text"> </div> <div class="form-group"> <textarea name="content" class="form-control">Du contenu</textarea> </div> <button type="submit" class="btn btn-primary">Envoyer</button> </form>',
 			$this->builder->generateForm($entity, '/demo')
 		);
 	}

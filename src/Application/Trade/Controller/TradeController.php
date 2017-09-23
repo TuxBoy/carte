@@ -37,7 +37,8 @@ class TradeController extends Controller
             $this->flash->success('Le commerce a été ajouté avec succès.');
             return $this->redirectTo($router->generateUri('trade.index'));
         }
-        return $this->view->render('@trade/create.twig');
+        $trade = Builder::create(Trade::class);
+        return $this->view->render('@trade/create.twig', compact('trade'));
     }
 
     /**
