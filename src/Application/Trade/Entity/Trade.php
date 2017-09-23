@@ -44,7 +44,7 @@ class Trade extends Entity
     /**
      * @var string
      *
-     * @Option(placeholder="Numéro de téléphone")
+     * @Option(placeholder="Numéro de téléphone", mandatory=false)
      */
     public $phone;
 

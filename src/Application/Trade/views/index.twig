@@ -26,7 +26,7 @@
                         <td>{{ trade.lng }}</td>
                         <td>{{ trade.lat }}</td>
                         <td>
-                            <a href="" class="btn btn-primary">Editer</a>
+                            <a href="{{ path('trade.update', {id: trade.id}) }}" class="btn btn-primary">Editer</a>
                             <form action="{{ path('trade.delete', {id: trade.id}) }}" method="post" style="display: inline-block;">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez vous vraiment supprimer le commerce ?')">Supprimer</button>
                             </form>

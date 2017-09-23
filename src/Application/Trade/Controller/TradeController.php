@@ -3,6 +3,7 @@ namespace App\Trade\Controller;
 
 use App\Trade\Entity\Trade;
 use App\Trade\Table\TradesTable;
+use MongoDB\Driver\Server;
 use TuxBoy\Builder\Builder;
 use TuxBoy\Controller\Controller;
 use GuzzleHttp\Psr7\ServerRequest;
@@ -39,6 +40,25 @@ class TradeController extends Controller
         }
         $trade = Builder::create(Trade::class);
         return $this->view->render('@trade/create.twig', compact('trade'));
+    }
+
+    /**
+     * @param int $id
+     * @param ServerRequest $request
+     * @param TradesTable $tradesTable
+     * @param Router $router
+     * @return string
+     */
+    public function update(int $id, ServerRequest $request, TradesTable $tradesTable, Router $router)
+    {
+        $trade = $tradesTable->get($id);
+        if ($request->getMethod() === 'POST') {
+            $tradesTable->patchEntity($trade, $request->getParsedBody());
+            $tradesTable->save($trade);
+            $this->flash->success('Le commerce a bien été mis à jour.');
+            return $this->redirectTo($router->generateUri('trade.index'));
+        }
+        return $this->view->render('@trade/update.twig', compact('trade'));
     }
 
     /**

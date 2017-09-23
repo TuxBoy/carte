@@ -26,6 +26,8 @@ class Application implements ApplicationInterface
         $router->get('/commerces', [TradeController::class, 'index'], 'trade.index');
         $router->get('/commerce/nouveau', [TradeController::class, 'create'], 'trade.create');
         $router->post('/commerce/nouveau', [TradeController::class, 'create']);
+        $router->get('/commerce/editer/{id:\d+}', [TradeController::class, 'update'], 'trade.update');
+        $router->post('/commerce/editer/{id:\d+}', [TradeController::class, 'update']);
         $router->post('/commerce/delete/{id:\d+}', [TradeController::class, 'delete'], 'trade.delete');
     }
 
