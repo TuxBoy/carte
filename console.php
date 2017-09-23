@@ -28,9 +28,16 @@ $app->command('init', function (OutputInterface $output) {
  * @example php console.php server 8080
  */
 $app->command('server [port]', function ($port, OutputInterface $output) {
-    $port = $port ? $port : 8000;
     system("php -S localhost:{$port} -t public -d display_errors=1 -d xdebug.remote_enable=1 -d xdebug.remote_autostart=1");
     $output->writeln("Le server écoute sur le port {$port}");
+})->defaults(['port' => 8000]);
+
+$app->command('new:application name', function (string $name, OutputInterface $output) {
+    // @TODO Cela va créer le dossier du "module" avec les bon fichiers et dossier automatiquement.
 });
+
+$app->command('migrate [force]', function ($force, OutputInterface $output) {
+    // @TODO Si l'Aspect est désactivé, il faut pourvoir lancer la migration en ligne de commande
+})->defaults(['force' => false]);
 
 $app->run();
