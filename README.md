@@ -10,6 +10,14 @@ $ git clone https://github.com/TuxBoy/carte.git && cd carte/
 
 (à mettre à jour le dépôt si on le merge)
 
+Vous pouvez utiliser la commande du console.php pour initialiser le projet,
+Il suffit de lancer la commande 
+
+```bash
+$ php console.php init
+```
+ça va avoir pour effet de faire toutes les étapes ci dessous automatiquement.
+
 ```bash
 $ composer install -o
 ```
@@ -30,7 +38,7 @@ $ make server
 ou
 
 ```bash
-$ php -S localhost:8000 -t public -d display_errors=1 -d xdebug.remote_enable=1 -d xdebug.remote_autostart=1
+$ php console.php server
 ```
 
 Ensuite il suffit de se rendre à l'adresse http://localhost:8000 dans votre navigateur :) .
