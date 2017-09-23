@@ -42,3 +42,8 @@ $ php console.php server
 ```
 
 Ensuite il suffit de se rendre à l'adresse http://localhost:8000 dans votre navigateur :) .
+
+## Remarques
+
+- Il y a un système de "migration" "implicite" cela veut dire que lorsque vous navigez sur le site, il y a un "Aspect" qui tourne et déclanche le maintainer, c'est le maintainer va mettre à jour les tables en se basant sur les entités définie dans le projet.
+Le fait de rajouter des propriétés à vos entité et que vous réactualiez la page, ça va mettre à jour le schema de vos table.
