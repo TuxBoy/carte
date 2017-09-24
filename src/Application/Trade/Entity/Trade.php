@@ -30,14 +30,14 @@ class Trade extends Entity
     /**
      * @var string
      *
-     * @Option(placeholder="Latitude")
+     * @Option(placeholder="Latitude", mandatory=true)
      */
     public $lat;
 
     /**
      * @var string
      *
-     * @Option(placeholder="Longitude")
+     * @Option(placeholder="Longitude", mandatory=true)
      */
     public $lng;
 

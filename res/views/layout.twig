@@ -43,6 +43,13 @@
            </div>
        </div>
     {% endif %}
+    {% if flash('error') %}
+       <div class="container">
+           <div class="alert alert-danger" role="alert">
+               <p>{{ flash('error') }}</p>
+           </div>
+       </div>
+    {% endif %}
     {% block body %}{% endblock %}
 
     <hr>
