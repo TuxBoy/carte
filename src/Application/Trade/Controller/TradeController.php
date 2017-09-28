@@ -3,20 +3,21 @@ namespace App\Trade\Controller;
 
 use App\Trade\Entity\Trade;
 use App\Trade\Table\TradesTable;
+use Cake\Validation\Validator;
 use TuxBoy\Builder\Builder;
 use TuxBoy\Controller\Controller;
 use GuzzleHttp\Psr7\ServerRequest;
 use TuxBoy\Router\Router;
+use TuxBoy\Session\SessionInterface;
 
 class TradeController extends Controller
 {
 
     /**
-     * @param ServerRequest $request
      * @param TradesTable $tradesTable
      * @return string
      */
-    public function index(ServerRequest $request, TradesTable $tradesTable)
+    public function index(TradesTable $tradesTable)
     {
         $trades = $tradesTable->find()->all();
         return $this->view->render('@trade/index.twig', compact('trades'));
@@ -31,19 +32,33 @@ class TradeController extends Controller
         return $this->view->render('@trade/create.twig', compact('trade'));
     }
 
-    public function write(ServerRequest $request, TradesTable $trades, Router $router, ?int $id = null)
-    {
+    public function write(
+        ServerRequest $request,
+        TradesTable $trades,
+        Router $router,
+        SessionInterface $session,
+        ?int $id = null
+    ) {
         if ($request->getMethod() === 'POST') {
-            if (is_null($id)) {
-                $trade = Builder::create(Trade::class, [$request->getParsedBody()]);
+            $validator = new Validator;
+            $validator->notEmpty(['name', 'lat', 'lng'])->requirePresence('name');
+            $errors = $validator->errors($request->getParsedBody());
+            if (empty($errors)) {
+                if (is_null($id)) {
+                    $trade = Builder::create(Trade::class, [$request->getParsedBody()]);
+                } else {
+                    $trade = $trades->findOrFail($id);
+                    $trades->patchEntity($trade, $request->getParsedBody());
+                }
+                if ($trades->save($trade)) {
+                    $this->flash->success('Le commerce a été ajouté avec succès.');
+                } else {
+                    $this->flash->error("Les données saisies sont erronées.");
+                }
             } else {
-                $trade = $trades->findOrFail($id);
-                $trades->patchEntity($trade, $request->getParsedBody());
-            }
-            if ($trades->save($trade)) {
-                $this->flash->success('Le commerce a été ajouté avec succès.');
-            } else {
+                $session->set('errors', $errors);
                 $this->flash->error("Les données saisies sont erronées.");
+                return $this->redirectTo($request->getUri()->getPath());
             }
         }
         return $this->redirectTo($router->generateUri('trade.index'));
