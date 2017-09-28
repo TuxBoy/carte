@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 use TuxBoy\Entity;
 use TuxBoy\Form\Builder\EntityFormBuilder;
 use TuxBoy\Form\Builder\FormBuilder;
+use TuxBoy\Session\ArraySession;
+use TuxBoy\Session\SessionInterface;
 
 class Fake extends Entity
 {
@@ -48,38 +50,44 @@ class EntityFormBuilderTest extends TestCase
 	 */
 	private $formBuilder;
 
-	public function setUp()
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    public function setUp()
 	{
+	    $this->session = new ArraySession;
 		$this->formBuilder = new FormBuilder();
-		$this->builder = new EntityFormBuilder($this->formBuilder);
+		$this->builder = new EntityFormBuilder($this->formBuilder, $this->session);
 	}
 
 	public function testGenerateSimpleForm()
 	{
 		$entity = new Fake;
 		$this->assertContains(
-			'<form action="/demo" method="POST"> <div class="form-group"> <input name="name" class="form-control" type="text"> </div> <button type="submit" class="btn btn-primary">Envoyer</button> </form>',
+			'<form action="/demo" method="POST"> <div class="form-group"> <input class="form-control" name="name" type="text"> </div> <button class="btn btn-primary" type="submit">Envoyer</button> </form>',
 			$this->builder->generateForm($entity, '/demo')
 		);
 	}
 
 	public function testGenerateFormWithParameters()
 	{
-		$entity = new Demo();
+		$entity = new Demo;
 		$this->assertEquals(
-			'<form action="/demo" method="POST"> <div class="form-group"> <input name="name" class="form-control" type="text"> </div> <div class="form-group"> <input name="slug" class="form-control" type="text"> </div> <div class="form-group"> <textarea name="content" class="form-control"></textarea> </div> <button type="submit" class="btn btn-primary">Envoyer</button> </form>',
+			'<form action="/demo" method="POST"> <div class="form-group"> <input class="form-control" name="name" type="text"> </div> <div class="form-group"> <input class="form-control" name="slug" type="text"> </div> <div class="form-group"> <textarea class="form-control" name="content"></textarea> </div> <button class="btn btn-primary" type="submit">Envoyer</button> </form>',
 			$this->builder->generateForm($entity, '/demo')
 		);
 	}
 
 	public function testGenerateFormWithData()
 	{
-		$entity = new Demo();
-		$entity->name = 'joe';
-		$entity->slug = 'un-test';
-		$entity->content = 'Du contenu';
+		$entity = new Demo;
+		$entity->set('name', 'joe');
+		$entity->set('slug', 'un-test');
+		$entity->set('content', 'Du contenu');
 		$this->assertEquals(
-            '<form action="/demo" method="POST"> <div class="form-group"> <input name="name" value="joe" class="form-control" type="text"> </div> <div class="form-group"> <input name="slug" value="un-test" class="form-control" type="text"> </div> <div class="form-group"> <textarea name="content" class="form-control">Du contenu</textarea> </div> <button type="submit" class="btn btn-primary">Envoyer</button> </form>',
+            '<form action="/demo" method="POST"> <div class="form-group"> <input class="form-control" name="name" type="text" value="joe"> </div> <div class="form-group"> <input class="form-control" name="slug" type="text" value="un-test"> </div> <div class="form-group"> <textarea class="form-control" name="content">Du contenu</textarea> </div> <button class="btn btn-primary" type="submit">Envoyer</button> </form>',
 			$this->builder->generateForm($entity, '/demo')
 		);
 	}
