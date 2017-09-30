@@ -22,7 +22,16 @@ $app->command('init', function (OutputInterface $output) {
 });
 
 /**
- * Cette commande permet de lancer  un serveur de développement
+ * Met à jour le framework dans le src/Core + fait un composer update du projet.
+ */
+$app->command('update', function (OutputInterface $output) {
+    shell_exec("composer update");
+    chdir(__DIR__ . "/src/Core");
+    shell_exec("git pull");
+    $output->writeln("Le projet et les dépendances ont bien été mis à jour.");
+});
+
+/** * Cette commande permet de lancer  un serveur de développement
  * @param $port int Le port sur le quel lancer le serveur (par défaut il se lance sur le port 8000)
  *
  * @example php console.php server 8080
