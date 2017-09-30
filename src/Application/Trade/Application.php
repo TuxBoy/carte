@@ -5,6 +5,7 @@ use App\Trade\Controller\TradeController;
 use App\Trade\Entity\Trade;
 use App\Trade\Table\TradesTable;
 use Cake\ORM\TableRegistry;
+use function DI\factory;
 use TuxBoy\ApplicationInterface;
 use TuxBoy\Router\Router;
 use function DI\add;
@@ -38,15 +39,16 @@ class Application implements ApplicationInterface
     public function addConfig(): array
     {
         return [
+            'prefix' => 'trade',
             'twig.path' => add([
                 'trade' => __DIR__ . '/views/'
             ]),
             'entities' => add([
                 Trade::class
             ]),
-            TradesTable::class => function () {
+            TradesTable::class => factory(function () {
                 return TableRegistry::get('Trades', ['className' => TradesTable::class]);
-            }
+            }),
         ];
     }
 
@@ -55,6 +57,6 @@ class Application implements ApplicationInterface
      */
     public function getName(): string
     {
-        return 'Trade';
+        return 'Trades';
     }
 }
