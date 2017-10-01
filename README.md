@@ -35,6 +35,12 @@ $ php console.php server
 
 Ensuite il suffit de se rendre à l'adresse http://localhost:8000 dans votre navigateur :) .
 
+- Pour faciliter la mise à jour du projet et du Framework, vous pouvez taper la commande : 
+
+```bash
+$ php console.php update
+```
+
 ## Remarques
 
 - Il y a un système de "migration" "implicite" cela veut dire que lorsque vous navigez sur le site, il y a un "Aspect" qui tourne et déclanche le maintainer, c'est le maintainer va mettre à jour les tables en se basant sur les entités définie dans le projet.
