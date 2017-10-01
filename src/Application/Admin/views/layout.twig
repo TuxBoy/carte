@@ -16,7 +16,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="{{ path('root') }}">Move City</a>
+    <a class="navbar-brand" href="{{ path('admin.index') }}">Administration</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,40 +24,38 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('root') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('root') }}">Aller au site <span class="sr-only">(current)</span></a>
             </li>
-            {% if current_user() %}
-                <li class="nav-item"><a href="{{ path('admin.index') }}" class="nav-link">{{ current_user().username }}</a></li>
-                <li class="nav-item"><a href="{{ path('user.logout') }}" class="nav-link">Se déconnecter</a></li>
-            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('trade.admin.index') }}">Les commerces</a>
+            </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>
+
+<div class="container" style="padding-top: 75px;">
     {% if flash('success') %}
-       <div class="container">
-           <div class="alert alert-success" role="alert">
-               <p>{{ flash('success') }}</p>
-           </div>
-       </div>
+        <div class="container">
+            <div class="alert alert-success" role="alert">
+                <p>{{ flash('success') }}</p>
+            </div>
+        </div>
     {% endif %}
     {% if flash('error') %}
-       <div class="container">
-           <div class="alert alert-danger" role="alert">
-               <p>{{ flash('error') }}</p>
-           </div>
-       </div>
+        <div class="container">
+            <div class="alert alert-danger" role="alert">
+                <p>{{ flash('error') }}</p>
+            </div>
+        </div>
     {% endif %}
     {% block body %}{% endblock %}
+</div>
 
-    <hr>
+<hr>
 
-    <footer>
-        <p>&copy; Company 2017</p>
-    </footer>
+<footer>
+    <p>&copy; Company 2017</p>
+</footer>
 </div> <!-- /container -->
 
 

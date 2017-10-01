@@ -1,7 +1,7 @@
 <?php
 namespace App\Trade;
 
-use App\Trade\Controller\TradeController;
+use App\Trade\Controller\Admin\TradeController;
 use App\Trade\Entity\Trade;
 use App\Trade\Table\TradesTable;
 use Cake\ORM\TableRegistry;
@@ -23,12 +23,12 @@ class Application implements ApplicationInterface
      */
     public function getRoutes(Router $router): void
     {
-        $router->get('/commerces', [TradeController::class, 'index'], 'trade.index');
-        $router->get('/commerce/nouveau', [TradeController::class, 'create'], 'trade.create');
-        $router->post('/commerce/nouveau', [TradeController::class, 'write']);
-        $router->get('/commerce/editer/{id:\d+}', [TradeController::class, 'update'], 'trade.update');
-        $router->post('/commerce/editer/{id:\d+}', [TradeController::class, 'write']);
-        $router->post('/commerce/delete/{id:\d+}', [TradeController::class, 'delete'], 'trade.delete');
+        $router->get('/admin/commerces', [TradeController::class, 'index'], 'trade.admin.index');
+        $router->get('/admin/commerce/nouveau', [TradeController::class, 'create'], 'trade.admin.create');
+        $router->post('/admin/commerce/nouveau', [TradeController::class, 'write']);
+        $router->get('/admin/commerce/editer/{id:\d+}', [TradeController::class, 'update'], 'trade.admin.update');
+        $router->post('/admin/commerce/editer/{id:\d+}', [TradeController::class, 'write']);
+        $router->post('/admin/commerce/delete/{id:\d+}', [TradeController::class, 'delete'], 'trade.admin.delete');
     }
 
     /**

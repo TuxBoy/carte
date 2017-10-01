@@ -1,40 +1,38 @@
-{% extends 'layout.twig' %}
+{% extends '@admin/layout.twig' %}
 
 {% block body %}
 
-    <div class="container" style="padding-top: 70px;">
-        <h1>Liste des commerces</h1>
+    <h1>Liste des commerces</h1>
 
-        <a href="{{ path('trade.create') }}" class="btn btn-outline-primary">Ajouter un commerce</a>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Rue</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for trade in trades %}
-                    <tr>
-                        <td>{{ trade.id }}</td>
-                        <td>{{ trade.name }}</td>
-                        <td>{{ trade.street }}</td>
-                        <td>{{ trade.lng }}</td>
-                        <td>{{ trade.lat }}</td>
-                        <td>
-                            <a href="{{ path('trade.update', {id: trade.id}) }}" class="btn btn-primary">Editer</a>
-                            <form action="{{ path('trade.delete', {id: trade.id}) }}" method="post" style="display: inline-block;">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez vous vraiment supprimer le commerce ?')">Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <a href="{{ path('trade.admin.create') }}" class="btn btn-outline-primary">Ajouter un commerce</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Rue</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for trade in trades %}
+                <tr>
+                    <td>{{ trade.id }}</td>
+                    <td>{{ trade.name }}</td>
+                    <td>{{ trade.street }}</td>
+                    <td>{{ trade.lng }}</td>
+                    <td>{{ trade.lat }}</td>
+                    <td>
+                        <a href="{{ path('trade.admin.update', {id: trade.id}) }}" class="btn btn-primary">Editer</a>
+                        <form action="{{ path('trade.admin.delete', {id: trade.id}) }}" method="post" style="display: inline-block;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez vous vraiment supprimer le commerce ?')">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

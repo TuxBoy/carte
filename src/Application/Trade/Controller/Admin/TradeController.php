@@ -1,5 +1,5 @@
 <?php
-namespace App\Trade\Controller;
+namespace App\Trade\Controller\Admin;
 
 use App\Trade\Entity\Trade;
 use App\Trade\Table\TradesTable;
@@ -7,6 +7,7 @@ use Cake\Validation\Validator;
 use TuxBoy\Builder\Builder;
 use TuxBoy\Controller\Controller;
 use GuzzleHttp\Psr7\ServerRequest;
+use TuxBoy\Controller\Http;
 use TuxBoy\Router\Router;
 use TuxBoy\Session\SessionInterface;
 
@@ -61,7 +62,7 @@ class TradeController extends Controller
                 return $this->redirectTo($request->getUri()->getPath());
             }
         }
-        return $this->redirectTo($router->generateUri('trade.index'));
+        return $this->redirectTo($router->generateUri('trade.admin.index'));
     }
 
     /**
@@ -84,12 +85,12 @@ class TradeController extends Controller
      */
     public function delete(int $id, TradesTable $tradesTable, ServerRequest $request, Router $router)
     {
-        if ($request->getMethod() === 'POST') {
+        if ($request->getMethod() === Http::POST) {
             $trade = $tradesTable->findOrFail($id);
             $tradesTable->delete($trade);
             $this->flash->success('Le commerce a bien été supprimé.');
         }
-        return $this->redirectTo($router->generateUri('trade.index'));
+        return $this->redirectTo($router->generateUri('trade.admin.index'));
     }
 
 }

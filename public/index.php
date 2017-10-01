@@ -12,7 +12,8 @@ $config = require dirname(__DIR__) . '/config.php';
 $applications = [
     \App\Home\Application::class,
     \App\Trade\Application::class,
-    \App\User\Application::class
+    \App\User\Application::class,
+    \App\Admin\Application::class
 ];
 $app = new TuxBoy\App($config, $applications);
 

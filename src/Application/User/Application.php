@@ -45,6 +45,9 @@ class Application implements ApplicationInterface
             'entities' => add([
                 User::class
             ]),
+            'goaop.aspect' => add([
+                get(AuthAspect::class)
+            ]),
             UsersTable::class => factory(function () {
                 return TableRegistry::get('Users', ['className' => UsersTable::class]);
             })

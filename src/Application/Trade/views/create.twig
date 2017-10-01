@@ -1,11 +1,9 @@
-{% extends 'layout.twig' %}
+{% extends '@admin/layout.twig' %}
 
 {% block body %}
 
-    <div class="container" style="padding-top: 70px;">
-        <h1>Ajouter un commerce</h1>
+    <h1>Ajouter un commerce</h1>
 
-        {{ form(trade, 'trade.create') }}
-    </div>
+    {{ form(trade, 'trade.admin.create') }}
 
 {% endblock %}
