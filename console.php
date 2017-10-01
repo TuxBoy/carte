@@ -90,7 +90,7 @@ class Application implements ApplicationInterface
     {
         return [
             'twig.path' => add([
-               $twigNamespace  => __DIR__ . '/views/'
+               '$twigNamespace'  => __DIR__ . '/views/'
             ]),
         ];
     }
