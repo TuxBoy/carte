@@ -45,3 +45,7 @@ $ php console.php update
 
 - Il y a un système de "migration" "implicite" cela veut dire que lorsque vous navigez sur le site, il y a un "Aspect" qui tourne et déclanche le maintainer, c'est le maintainer va mettre à jour les tables en se basant sur les entités définie dans le projet.
 Le fait de rajouter des propriétés à vos entité et que vous réactualiez la page, ça va mettre à jour le schema de vos table.
+
+## TODO
+
+[ ] Configuration de webpack 
