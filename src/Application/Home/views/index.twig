@@ -5,7 +5,12 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container-fluid">
-        <div id="map"></div>
+        <gmap-map
+                :center="{lat:10, lng:10}"
+                :zoom="7"
+                map-type-id="terrain"
+                style="width: 100%; height: 600px"
+        ></gmap-map>
     </div>
 </div>
 
