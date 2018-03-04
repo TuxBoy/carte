@@ -29,7 +29,7 @@ class AuthService implements AuthServiceInterface
     public function __construct(UsersTable $usersTable, SessionInterface $session)
     {
         $this->usersTable = $usersTable;
-        $this->session = $session;
+        $this->session    = $session;
     }
 
     /**

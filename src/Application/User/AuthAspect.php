@@ -51,12 +51,14 @@ class AuthAspect implements Aspect
         $this->container = $container;
     }
 
-    /**
-     * @param MethodInvocation $invocation
-     *
-     * @Before("execution(public App\*\Controller\Admin\*->*(*)) || execution(public App\Admin\Controller\*->*(*))")
-     * @return Redirect
-     */
+		/**
+		 * @param MethodInvocation $invocation
+		 *
+		 * @return void
+		 * @throws \Psr\Container\ContainerExceptionInterface
+		 * @throws \Psr\Container\NotFoundExceptionInterface
+		 * @Before("execution(public App\*\Controller\Admin\*->*(*)) || execution(public App\Admin\Controller\*->*(*))")
+		 */
     public function allowAdminAccess(MethodInvocation $invocation)
     {
         $authService = $this->container->get(AuthService::class);
@@ -68,6 +70,23 @@ class AuthAspect implements Aspect
             header('Location:' . '/'); exit();
         }
     }
+
+		/**
+		 * Est Exécuté avant la méthode login, si on est déjà connecté, on refuse l'accès à cette page
+		 *
+		 * @param MethodInvocation $invocation
+		 * @throws \Psr\Container\ContainerExceptionInterface
+		 * @throws \Psr\Container\NotFoundExceptionInterface
+		 * @Before("execution(public App\*\Controller\*->login(*))")
+		 */
+    public function allowLoginAccess(MethodInvocation $invocation)
+		{
+				$authService = $this->container->get(AuthService::class);
+				if ($authService->getUser()) {
+						$this->flash->error('Vous êtes déjà connecté.');
+						header('Location:' . '/'); exit();
+				}
+		}
 
 
 }

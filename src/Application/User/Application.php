@@ -23,9 +23,11 @@ class Application implements ApplicationInterface
      */
     public function getRoutes(Router $router): void
     {
-        $router->get('/login', [UserController::class, 'login'], 'user.login');
-        $router->post('/login', [UserController::class, 'login']);
-        $router->get('/logout', [UserController::class, 'logout'], 'user.logout');
+        $router->get('/login',     [UserController::class, 'login'], 'user.login');
+        $router->post('/login',    [UserController::class, 'login']);
+        $router->get('/logout',    [UserController::class, 'logout'], 'user.logout');
+        $router->get('/register',  [UserController::class, 'register'], 'user.register');
+				$router->post('/register', [UserController::class, 'registerForm']);
     }
 
     /**

@@ -28,7 +28,7 @@ class UserForm extends FormHelper
      */
     public function __construct(FormBuilder $formBuilder, Router $router)
     {
-        $this->router = $router;
+        $this->router      = $router;
         $this->formBuilder = $formBuilder;
     }
 
