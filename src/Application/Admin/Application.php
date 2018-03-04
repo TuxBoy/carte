@@ -18,7 +18,7 @@ class Application implements ApplicationInterface
      */
     public function getRoutes(Router $router): void
     {
-        $router->get('/admin/dashboard', [AdminController::class, 'index'], 'admin.index');
+        $router->get('/admin', [AdminController::class, 'index'], 'admin.index');
     }
 
     /**
